@@ -22,5 +22,5 @@ class deuda:
 
         else:
 
-            print(f" \ntodavía puedes pagar tu deuda sin cargos con {self.aquien} que tiene un valor de {self.deuda}, ojo o te vamos a quitar tu casa :)")
+            print(f" \ntodavía puedes pagar tu deuda sin cargos con {self.aquien.nombre} que tiene un valor de {self.deuda}, ojo o te vamos a quitar tu casa :)")
 
