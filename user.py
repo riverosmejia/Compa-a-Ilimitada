@@ -9,9 +9,18 @@ class Usuario_:
         self.tam=0
         self.historial=[]
         self.deudas=[]
+        self.quiero=False
 
     def __str__(self):
         return f'nombre: {self.nombre} monto: {self.monto}'
+
+    def setQ(self,q):
+
+        self.quiero=q
+
+    def getQ(self):
+
+        return self.quiero
 
     def revaluarDeudas(self):
 
@@ -82,7 +91,7 @@ class Usuario_:
 
             self.monto=self.monto-self.deudas[resp].deuda
 
-            self.deudas[resp].aquien.setMonto(self.deudas[resp].aquien.getMonto()+self.deudas[resp].deuda)
+            self.deudas[resp].aquien.setMonto((self.deudas[resp].aquien.getMonto()+self.deudas[resp].deuda)-((self.deudas[resp].aquien.getMonto()+self.deudas[resp].deuda)*0.001))
 
             #self.deudas[resp].aquien.monto+=self.deudas[resp].deuda
 

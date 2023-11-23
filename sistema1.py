@@ -15,14 +15,15 @@ class sist:
         resp1=input('dime el grupo al que quieres seleccionar: ')
 
         for grupos in self.ListaG:
+            #print(grupos.YaEsta(resp1))
 
-            print(grupos.YaEsta(name))
+            if resp1 == grupos.nombre:
 
-            if grupos.YaEsta(name):
+                if grupos.YaEsta(name):
 
-                self.GrupoActual=grupos
+                    self.GrupoActual=grupos
 
-                return
+                    return
 
     def iniciarSesion(self,name,cont):
 
@@ -64,7 +65,7 @@ class sist:
 
             else:
 
-                resp=int(input("1- salir\n2- invitar personas\n3- salirse del grupo\n4- pedir prestamo interno\n5- disolver grupoR/="))
+                resp=int(input("1- salir\n2- invitar personas\n3- disolver grupoR/="))
 
             if self.GrupoActual is None:
 
@@ -258,14 +259,65 @@ class sist:
 
                             self.GrupoActual.setMonto(self.GrupoActual.getMonto()+resp2)
 
+                            self.UsuarioActual.agregarHistorial(f'aporte de {resp2} al grupo {UsuarioActual}')
+
                 elif resp == 16:
 
                     terminar=True
 
             if self.GrupoActual is not None:
 
-                if resp == 10:
+                if resp == 1:
 
-                    None
+                    self.GrupoActual=None
+
+                elif resp== 2:
+
+                    nombre=input('dame le nombre del usuario')
+
+                    for persona in self.ListaU:
+
+                        if persona.getName() ==nombre:
+
+                            if self.GrupoActual.YaEsta(persona.getName()):
+
+                                print('el usuario ya se encuentra dentro del grupo')
+
+                            else: 
+
+                                self.GrupoActual.agregarUser(persona)
+
+                elif resp ==3:
+
+                    si=0
+
+                    porSi=[]
+
+                    for user in self.ListaU:
+
+                        if self.GrupoActual.YaEsta(user.nombre):
+
+                            porSi.append(user)
+
+                            if user.quiero==False:
+
+                                si=2
+                            
+                    
+                    if si == 0:
+
+                        resto=self.GrupoActual.getMonto()-(self.GrupoActual.getMonto()*0.05)
+
+                        if porSi:
+
+                            resto=resto/len(porSi)
+
+                        for user in porSi:
+
+                            user.setMonto(user.getMonto()+resto)
+
+
+
+
 
 

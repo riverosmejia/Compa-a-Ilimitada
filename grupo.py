@@ -15,6 +15,16 @@ class grupo:
 
         return f'nombre del grupo: {self.nombre} monto del grupo: {self.monto} usuarios actuales: {self.tamaño+1} '
 
+    def disolver(self):
+
+        for user in self.usuarios:
+
+            if user.quiero==False:
+
+                return False
+
+        return True
+
     def setMonto(self,nuevo):
 
         self.monto=nuevo
