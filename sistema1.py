@@ -60,7 +60,7 @@ class sist:
 
             if self.GrupoActual is None:
 
-                resp=int(input("1- iniciar sesión\n2- cerrar sesión\n3- crear usuario\n4- ver usuarios existentes\n5- ver grupos existentes\n6- acceder a grupo\n7- crear grupo\n8. seleccionar grupo\n9- pedir préstamo\n10- agregar dinero\n11- ver deudas\n12- pagar deudas\n13- ver historial completo14\n14. pasar mes\n15- salir\nR/="))
+                resp=int(input("1- iniciar sesión\n2- cerrar sesión\n3- crear usuario\n4- ver usuarios existentes\n5- ver grupos existentes\n6- acceder a grupo\n7- crear grupo\n8. seleccionar grupo\n9- pedir préstamo\n10- agregar dinero\n11- ver deudas\n12- pagar deudas\n13- ver historial completo14\n14. pasar mes\n15- subir monto a grupo\n16- salir\nR/="))
 
             else:
 
@@ -243,6 +243,22 @@ class sist:
                     contadorM+=1
 
                 elif resp == 15:
+
+                    #if grupos.YaEsta(self.UsuarioActual.getName()):
+
+                    resp1=input('dime el grupo al que quieres seleccionar: ')
+
+                    resp2=int(input('dame el dinero que quieres ingresar'))
+
+                    for grupos in self.ListaG:
+
+                        #print(grupos.YaEsta(name))
+
+                        if grupos.YaEsta(self.UsuarioActual.getName()):
+
+                            self.GrupoActual.setMonto(self.GrupoActual.getMonto()+resp2)
+
+                elif resp == 16:
 
                     terminar=True
 

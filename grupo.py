@@ -15,6 +15,10 @@ class grupo:
 
         return f'nombre del grupo: {self.nombre} monto del grupo: {self.monto} usuarios actuales: {self.tamaño+1} '
 
+    def setMonto(self,nuevo):
+
+        self.monto=nuevo
+
     def getMonto(self):
 
         return self.monto
