@@ -150,6 +150,10 @@ class sist:
 
                     mont=int(input("dame el monto de dinero que ingresarás al grupo: "))
 
+                    if mont>0:
+
+                        mont=mont-(mont*0.001)
+
                     if self.UsuarioActual is not None:
 
                         if mont > self.UsuarioActual.getMonto():
@@ -211,7 +215,13 @@ class sist:
 
                         ad=int(input('cuanto dinero vas a agregar'))
 
+                        if ad>0:
+
+                            ad=ad-(ad*0.001)
+
                         self.UsuarioActual.setMonto(self.UsuarioActual.getMonto()+ad)
+
+                        self.GrupoActual.agregarHistorial(f'agregado a la cuenta un monto con valor de {ad}')
 
                         #self.UsuarioActual.monto=self.UsuarioActual.monto+ad
 
